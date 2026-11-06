@@ -1,4 +1,4 @@
-const C="bps-v3";
+const C="bps-v4";
 const F=["./","index.html","manifest.webmanifest","icons/icon-192.png","icons/icon-512.png"];
 self.addEventListener("install",e=>e.waitUntil(caches.open(C).then(c=>c.addAll(F)).then(()=>self.skipWaiting())));
 self.addEventListener("activate",e=>e.waitUntil(caches.keys().then(k=>Promise.all(k.filter(x=>x.indexOf("bps-")===0&&x!==C).map(x=>caches.delete(x)))).then(()=>self.clients.claim())));
